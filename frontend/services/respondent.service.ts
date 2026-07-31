@@ -1,5 +1,8 @@
 import api from "./api";
-import { RespondentPagination, CreateRespondentRequest } from "@/types/respondent";
+import {
+  RespondentPagination,
+  CreateRespondentRequest,
+} from "@/types/respondent";
 
 export async function getRespondents(
   page = 1,
@@ -13,12 +16,23 @@ export async function getRespondents(
   return data;
 }
 
-// TAMBAHKAN INI
 export async function createRespondent(
   payload: CreateRespondentRequest
 ) {
   const { data } = await api.post(
     "/respondents",
+    payload
+  );
+
+  return data;
+}
+
+export async function updateRespondent(
+  id: number,
+  payload: CreateRespondentRequest
+) {
+  const { data } = await api.put(
+    `/respondents/${id}`,
     payload
   );
 
